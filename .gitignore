@@ -1,0 +1,6 @@
+.DS_Store
+.sass-cache
+.git
+config.codekit
+bower_components
+graphic-assets
