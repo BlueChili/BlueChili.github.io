@@ -4,3 +4,4 @@
 config.codekit
 bower_components
 graphic-assets
+*.swp
