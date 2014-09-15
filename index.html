@@ -1,54 +1,77 @@
-<!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Home To BlueChili and all his minions</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="css/semantic.css">
-    <link rel="stylesheet" href="stylesheets/main.css">
-    <link rel="icon" href="favicon.png" sizes="16x16" />
-    <script type="text/javascript" src="javascript/semantic.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <title>Welcome! | My Website</title>
+    <meta name="generator" content="DocPad v6.64.0" />
+    <style >html.wait {
+	cursor: wait !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}</style><link  rel="stylesheet" href="/styles/style.css" />
 </head>
-
 <body>
-    <header class="logo">
-        <img src="img/lolqq-small.png" alt="You're not welcome here">
-    </header>
-    <div class="ui three row page grid">
-        <nav class="ui one row inverted menu">
-            <a href="" class="item">
-                <i class="home icon"></i>Home</a>
-            <a href="" class="item">
-                <i class="briefcase icon"></i>Portfolio</a>
-            <a href="" class="item">
-                <i class="mail icon"></i>Contact</a>
-            <nav class="ui inverted right menu">
-                <a href="" class="item">
-                    <i class="align left icon"></i>Blog</a>
-            </nav>
-        </nav>
+	<img src="/images/logo.gif"/>
+	<ul>
+		
+			<li class="inactive">
+				<a href="/about.html">
+					About Me
+				</a>
+			</li>
+		
+			<li class="active">
+				<a href="/index.html">
+					Welcome!
+				</a>
+			</li>
+		
+	</ul>
+    <h1>Welcome!</h1>
+    <p>Welcome to My Website!</p>
+    <script >(function(){
+	/* Did we just livereload? */
+var log = !!(localStorage && console && console.log && true);
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReload completed at', new Date())
+}
 
-        <div class="main ui two column row">
-            <div class="article ui one column">
-                <p>Once upon a time there was a group of mail signature haters,
-                    <br>it was the dawn fo a new era where the proliferation of bytes in emails was about to be culled for good, once and for all this stupid redundance would be wiped out of the internet</p>
-            </div>
-
-            <div class="article ui one column row center">
-                <p>Welcome to the internet
-                    <br>everybody hates you here
-                    <br>:)</p>
-                <p>Gaze upon the mighty lolqq sandwich!</p>
-            </div>
-        </div>
-    </div>
-    <footer class="logo">
-        <img class="logo" src="img/lolqq-small.png" alt="You're not welcome here">
-    </footer>
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var primus = new Primus('/docpad-livereload');
+	primus.on('data', function(data){
+		if ( data && data.message ) {
+			if ( data.message === 'generateBefore' ) {
+				if ( log ) {
+					console.log('LiveReload started at', new Date());
+				}
+				if ( typeof document.getElementsByTagName !== 'undefined' ) {
+	document.getElementsByTagName('html')[0].className += ' wait';
+}
+			}
+			else if ( data.message === 'generateAfter' ) {
+				if ( log ) {
+					localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+				}
+				document.location.reload();
+			}
+		}
+	});
+};
+	/* Inject socket into our page */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = 'async';
+	t.src = '/primus/primus.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t, s);
+};
+	if ( typeof Primus !== 'undefined' ) {
+		listen();
+	} else {
+		inject();
+	}
+})();</script><script defer="defer"  src="/vendor/jquery.js"></script><script defer="defer"  src="/scripts/script.js"></script>
 </body>
-
 </html>
