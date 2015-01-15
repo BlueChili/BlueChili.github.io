@@ -1,5 +1,9 @@
 body {
-  max-width: 480px;
+  max-width: 33em;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("pics/squared_metal.png");
+  background-repeat: repeat;
 }
 audio {
   margin-left: auto;
