@@ -2,10 +2,13 @@ body {
   max-width: 33em;
   margin-left: auto;
   margin-right: auto;
-  background: url("pics/squared_metal.png");
+  background: url("../pics/tweed.png");
   background-repeat: repeat;
 }
 audio {
   margin-left: auto;
   margin-right: auto;
+}
+div#info {
+  display: none;
 }
