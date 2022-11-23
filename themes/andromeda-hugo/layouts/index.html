@@ -270,4 +270,715 @@
 {{end}}
 {{end}}
 
+{{/* About page components */}}
+{{with .Params.who_we_are}}
+{{if .enable}}
+<section class="section-sm">
+  <div class="container position-relative">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up">
+        <div class="section-title">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+          <p>{{.description | markdownify}}</p>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="about-image">
+          <div class="block">
+            {{ if fileExists (add `assets/` .image) }}
+            {{$img:= resources.Get .image }}
+            {{$img:= $img.Resize "464x"}}
+            <img loading="lazy" decoding="async" class="img-fluid" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$img.RelPermalink}}" alt="Video Thumbnail" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+            {{end}}
+
+            <div class="has-circle">
+              <span class="circle-4 ratio-20 fill"></span>
+              <span class="circle-5 ratio-47"></span>
+            </div>
+          </div>
+
+          <div class="has-circle">
+            <span class="circle-1 ratio-85 fill"></span>
+            <span class="circle-2 ratio-37"></span>
+            <span class="circle-3 ratio-20 fill"></span>
+            <span class="circle-6 ratio-85 fill"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.what_we_do}}
+{{if .enable}}
+<section data-aos="fade-in">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="section-title text-center">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+        </div>
+      </div>
+
+      {{range .block}}
+      <div class="col-xl-5 col-lg-6">
+        <div class="text-center px-0 px-md-5 mt-4">
+          <h3 class="text-capitalize">{{.title | markdownify}}</h3>
+          <p>{{.content | markdownify}}</p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.our_mission}}
+{{if .enable}}
+<section class="section-sm">
+  <div class="container position-relative">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5 col-md-6" data-aos="fade-up">
+        <div class="about-image">
+          <div class="block">
+            {{ if fileExists (add `assets/` .image) }}
+            {{$img:= resources.Get .image }}
+            {{$img:= $img.Resize "4645x"}}
+            <img loading="lazy" decoding="async" class="img-fluid" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$img.RelPermalink}}" alt="Video Thumbnail" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+            {{end}}
+
+            <div class="has-circle">
+              <span class="circle-4 ratio-20 fill"></span>
+              <span class="circle-5 ratio-47"></span>
+            </div>
+          </div>
+
+          <div class="has-circle">
+            <span class="circle-1 ratio-85 fill"></span>
+            <span class="circle-2 ratio-37"></span>
+            <span class="circle-3 ratio-20 fill"></span>
+            <span class="circle-6 ratio-85 fill"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="section-title">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+          <p>{{.description | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.about_video}}
+{{if .enable}}
+<section class="video-popup video-popup-two has-bg-color">
+  <div class="container-xxl position-relative">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="block">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-5">
+              <div class="section-title" data-aos="fade-up">
+                <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+                <h2 class="title">{{.title | markdownify}}</h2>
+                <p>{{.description | markdownify}}</p>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="video-block" data-aos="fade-up" data-aos-delay="100">
+                <button type="button" class="video-play-btn" data-src="{{.video_url}}">
+                  <i class="las la-play"></i>
+                </button>
+                {{ if fileExists (add `assets/` .video_thumbnail) }}
+                {{$img:= resources.Get .video_thumbnail }}
+                {{$img:= $img.Resize "700x "}}
+                {{$imgWebp:= $img.Resize "700x webp"}}
+                <img loading="lazy" decoding="async" class="img-fluid video-thumb" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$imgWebp.RelPermalink}}" alt="Video Thumbnail" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="has-circle has-bg-anim" data-aos="fade-in">
+          <span class="circle-1 ratio-32"></span>
+          <span class="circle-2 ratio-20"></span>
+          <span class="circle-3 ratio-20"></span>
+          <span class="circle-4 ratio-20"></span>
+          <span class="circle-5 ratio-37"></span>
+          <span class="circle-6 ratio-20"></span>
+          <span class="circle-7 ratio-47"></span>
+          <span class="circle-8 ratio-37"></span>
+          
+          <svg class="text-primary" style="opacity:.15" width='100%' height='100%' viewBox='0 0 1401 613' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M2 580C35.1785 462.015 166.359 247.408 425.652 332.866C749.767 439.688 890.318 302.84 946.338 181.583C1002.36 60.3256 1149.41 -52.8479 1400 35.4968' stroke='currentColor' stroke-width='4' stroke-dasharray='10 10'/><path d='M1398 0.999977C1364.87 125.95 1233.88 353.224 974.955 262.722C651.302 149.594 510.953 294.52 455.013 422.935C399.073 551.35 252.231 671.203 2.00002 577.644' stroke='currentColor' stroke-width='4' stroke-dasharray='10 10'/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.brands_carousel}}
+{{if .enable}}
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title text-center" data-aos="fade-in">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+        </div>
+      </div>
+      {{with site.GetPage (string .Params.clients.section)}}
+      {{with .Params.brands_carousel}}
+      <div class="col-md-12" data-aos="fade-left">
+        <div class="brand-carousel swiper-container border-0 mt-0">
+          <div class="swiper-wrapper">
+            {{range .brand_images}}
+            {{ if fileExists (add `assets/` .) }}
+            <div class="swiper-slide">
+              <div class="brand-item">
+                {{$img:= resources.Get . }}
+                {{$img_width := $img.Width }}
+
+                {{$img_orginal := add (add (string $img_width) "x") " " }}
+                {{$img_src := ($img.Resize $img_orginal).RelPermalink }}
+
+                {{$imgWebp := add (add (string $img_width) "x") " webp" }}
+                {{$imgWebp_src := ($img.Resize $imgWebp).RelPermalink }}
+                <img loading="lazy" decoding="async" class="img-fluid" width="{{$img_width}}" height="{{$img.Height}}" src="{{$imgWebp_src}}" alt="Brand Image" onerror="this.onerror=null;this.src='{{$img_src}}'">
+              </div>
+            </div>
+            {{end}}
+            {{end}}
+          </div>
+        </div>
+      </div>
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.our_team}}
+{{if .enable}}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title text-center" data-aos="fade-in">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+          <p>{{.description | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      {{range .team}}
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="team-item text-center">
+          <div class="team-image">
+            {{ if fileExists (add `assets/` .image) }}
+            {{$img:= resources.Get .image }}
+            {{$img:= $img.Resize "175x "}}
+            {{$imgWebp:= $img.Resize "175x webp"}}
+            <img loading="lazy" decoding="async" class="w-100 img-fluid rounded-circle" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$imgWebp.RelPermalink}}" alt="Team Image" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+            {{end}}
+          </div>
+          <h3>{{.name | markdownify}}</h3>
+          <p>{{.designation | markdownify}}</p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.our_office}}
+{{if .enable}}
+<section class="section-sm mb-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-8 col-md-10">
+        <div class="section-title text-center mb-0" data-aos="fade-in">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+          <p>{{.description | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+        <div class="row">
+          {{range .office_locations}}
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="office-loc-item">
+              {{ if fileExists (add `assets/` .country_flag) }}
+              {{$img:= resources.Get .country_flag }}
+              {{$img:= $img.Resize "80x "}}
+              {{$imgWebp:= $img.Resize "80x webp"}}
+              <img loading="lazy" decoding="async" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$imgWebp.RelPermalink}}" alt="Flags" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+              {{end}}
+              <h3>{{.city | markdownify}}</h3>
+              <p>{{.address_line_one | markdownify}}</p>
+              <p>{{.address_line_two | markdownify}}</p>
+            </div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+
+{{/* blog listing */}}
+<section class="section-sm" data-aos="fade-in">
+  <div class="container-xxl">
+    <div class="row justify-content-center">
+    {{ $paginator := .Paginate (where site.RegularPages "Section" "in" site.Params.mainSections) }}
+    {{ range $paginator.Pages }}
+    <div class="col-lg-5 col-md-6">
+      {{ .Render "article" }}
+    </div>
+    {{ end }}
+    </div>
+  </div>
+</section>
+
+<div class="section-sm pt-0">
+<div class="container-xxl">
+  <div class="row mb-4">
+    <div class="col-12">
+      {{"<!-- pagination -->" | safeHTML }}
+      {{ $paginator := .Paginator }}
+      <!-- Number of links either side of the current page. -->
+      {{ $adjacent_links := 2 }}
+      <!-- $max_links = ($adjacent_links * 2) + 1 -->
+      {{ $max_links := (add (mul $adjacent_links 2) 1) }}
+      <!-- $lower_limit = $adjacent_links + 1 -->
+      {{ $lower_limit := (add $adjacent_links 1) }}
+      <!-- $upper_limit = $paginator.TotalPages - $adjacent_links -->
+      {{ $upper_limit := (sub $paginator.TotalPages $adjacent_links) }}
+      <!-- If there's more than one page. -->
+      {{ if gt $paginator.TotalPages 1 }}
+      <nav class="mb-3">
+        <ul class="pagination justify-content-center">
+          <!-- Previous page. -->
+          {{ if $paginator.HasPrev }}
+          <li class="page-item"><a class="page-link arrow" href="{{ $paginator.Prev.URL }}" aria-label="Pagination Arrow">
+            <i class="las la-angle-left"></i>
+          </a></li>
+          {{ end }}
+          <!-- Page numbers. -->
+          {{ range $paginator.Pagers }}
+          {{ $.Scratch.Set "page_number_flag" false }}
+          <!-- Advanced page numbers. -->
+          {{ if gt $paginator.TotalPages $max_links }}
+          <!-- Lower limit pages. -->
+          <!-- If the user is on a page which is in the lower limit.  -->
+          {{ if le $paginator.PageNumber $lower_limit }}
+          <!-- If the current loop page is less than max_links. -->
+          {{ if le .PageNumber $max_links }}
+          {{ $.Scratch.Set "page_number_flag" true }}
+          {{ end }}
+          <!-- Upper limit pages. -->
+          <!-- If the user is on a page which is in the upper limit. -->
+          {{ else if ge $paginator.PageNumber $upper_limit }}
+          <!-- If the current loop page is greater than total pages minus $max_links -->
+          {{ if gt .PageNumber (sub $paginator.TotalPages $max_links) }}
+          {{ $.Scratch.Set "page_number_flag" true }}
+          {{ end }}
+          <!-- Middle pages. -->
+          {{ else }}
+          {{ if and ( ge .PageNumber (sub $paginator.PageNumber $adjacent_links) ) ( le .PageNumber (add $paginator.PageNumber $adjacent_links) ) }}
+          {{ $.Scratch.Set "page_number_flag" true }}
+          {{ end }}
+          {{ end }}
+          <!-- Simple page numbers. -->
+          {{ else }}
+          {{ $.Scratch.Set "page_number_flag" true }}
+          {{ end }}
+          <!-- Output page numbers. -->
+          {{ if eq ($.Scratch.Get "page_number_flag") true }}
+          <li class="page-item">
+            <a href="{{ .URL }}" class="page-link{{ if eq . $paginator }} active {{ end }}">
+              {{ .PageNumber }}
+            </a>
+          </li>
+          {{ end }}
+          {{ end }}
+          <!-- Next page. -->
+          {{ if $paginator.HasNext }}
+          <li class="page-item"><a class="page-link arrow" href="{{ $paginator.Next.URL }}" aria-label="Pagination Arrow">
+            <i class="las la-angle-right"></i>
+          </a></li>
+          {{ end }}
+        </ul>
+      </nav>
+      {{ end }}
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+{{/* Case Studies */}}
+{{with .Params.case_studies}}
+{{if .enable}}
+<section class="section">
+  <div class="container">
+     <div class="row justify-content-center">
+        <div class="col-12">
+           <div class="section-title text-center mb-0" data-aos="fade-in">
+            <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+            <h2 class="title">{{.title | markdownify}}</h2>
+            <p>{{.description | markdownify}}</p>
+           </div>
+        </div>
+     </div>
+     <div class="row justify-content-center">
+       <div class="col-lg-8 col-md-10">
+         <div class="row justify-content-center">
+          {{range where site.RegularPages "Section" "case-studies"}}
+          <div class="col-md-6" data-aos="fade-in">
+            <div class="case-studies-item">
+                <h3 class="font-weight-600">{{.Title | markdownify}}</h3>
+                <div class="d-flex align-items-center mt-4">
+                  <div class="flex-fill" style="max-width:55%">
+                      <div class="content">
+                        {{.Plain | truncate 50}}
+                      </div>
+
+                      <a href="{{.RelPermalink}}" class="text-primary mt-3 d-inline-block font-weight-500 stretched-link">{{i18n `read_more`}}<i class="las la-angle-right ms-1"></i></a>
+                  </div>
+                  <div class="ps-4">
+                    {{ if and (.Params.logo) (fileExists (add `assets/` .Params.logo)) }}
+                    {{ $img:= resources.Get (.Params.logo) }}
+                    <img loading="lazy" decoding="async" class="img-fluid" src="{{ $img.RelPermalink }}" alt="brand image">
+                    {{ end }}
+                  </div>
+                </div>
+            </div>
+          </div>
+          {{end}}
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+{{/* End Case Studies */}}
+
+
+
+
+
+{{with .Params.our_values}}
+{{if .enable}}
+<section class="section pb-0">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5" data-aos="fade-up">
+        <div class="section-title mb-0">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+          <p>{{.description | markdownify}}</p>
+          {{if .button_link}}
+          <a href="{{.button_link}}" class="btn btn-primary mt-4">{{.button_label}}</a>
+          {{end}}
+        </div>
+      </div>
+      <div class="col-lg-5 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+        <div class="ps-0 ps-lg-4">
+          {{ if fileExists (add `assets/` .image) }}
+          {{$img:= resources.Get .image }}
+          {{$img:= $img.Resize "560x"}}
+          <img loading="lazy" decoding="async" class="img-fluid" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$img.RelPermalink}}" alt="Video Thumbnail" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.benefit}}
+{{if .enable}}
+<section class="section career">
+  <div class="container-xxl position-relative">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block">
+          <div class="section-title text-center mb-0">
+            <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+            <h2 class="title">{{.title | markdownify}}</h2>
+            <p>{{.description | markdownify}}</p>
+          </div>
+
+          <div class="row career-benefits mx-auto justify-content-around">
+            {{ $.Scratch.Set "counter" 0 }}
+            {{range .benefits}}
+            {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+            {{$n := $.Scratch.Get "counter"}}
+            <div class="col-lg-3 col-md-6">
+              <div class="career-benefits-item text-center">
+                <i class="{{.icon}} text-primary mb-2"></i>
+                <h4>{{.title | markdownify}}</h4>
+              </div>
+            </div>
+            {{if (modBool $n 3)}}<div class="col-lg-12 d-none d-lg-block"></div>{{end}}
+            {{end}}
+          </div>
+        </div>
+
+
+        <div class="has-circle has-bg-anim" data-aos="fade-in">
+          <span class="circle-1 ratio-32"></span>
+          <span class="circle-2 ratio-37"></span>
+          <span class="circle-3 ratio-20"></span>
+          <span class="circle-4 ratio-47"></span>
+          <span class="circle-5 ratio-37"></span>
+          <span class="circle-6 ratio-20"></span>
+          <span class="circle-7 ratio-20"></span>
+          <span class="circle-8 ratio-37"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.office_gallery}}
+{{if .enable}}
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12" data-aos="fade-up">
+        <div class="section-title text-center">
+          <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+          <h2 class="title">{{.title | markdownify}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center" data-aos="fade-up">
+      <div class="col-lg-10">
+        <div class="row justify-content-center">
+          {{range .images}}
+          <div class="col-lg-{{.width}} col-md-4 col-sm-6 mt-4 {{.custom_class}}">
+            {{ if fileExists (add `assets/` .image) }}
+            {{$img:= resources.Get .image }}
+            <img loading="lazy" decoding="async" class="w-100 rounded-3" src="{{$img.RelPermalink}}" alt="gallery image">
+            {{end}}
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+{{with .Params.open_position}}
+{{if .enable}}
+<section id="open-position" class="section career pt-0">
+  <div class="container-xxl position-relative">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block">
+          <div class="section-title text-center">
+            <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+            <h2 class="title">{{.title | markdownify}}</h2>
+          </div>
+
+          <div class="row justify-content-center pt-4">
+            <div class="col-lg-9">
+              <div class="row justify-content-center">
+                {{range where site.RegularPages "Section" "career"}}
+                <div class="col-md-5" data-aos="fade-up">
+                  <div class="listing-item bg-white text-center mb-4">
+                    <h3 class="mb-2 font-weight-bold">{{.Title | markdownify}}</h3>
+                    <h6 class="text-black-800 mb-3">{{.Params.job_nature | markdownify}}</h6>
+                    <a href="{{.RelPermalink}}" class="h5 text-primary stretched-link">{{i18n `view_listing`}}<i class="las la-angle-right ms-1"></i></a>
+                  </div>
+                </div>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="has-circle has-bg-anim" data-aos="fade-in">
+          <span class="circle-1 ratio-32"></span>
+          <span class="circle-2 ratio-37"></span>
+          <span class="circle-3 ratio-20"></span>
+          <span class="circle-4 ratio-47"></span>
+          <span class="circle-5 ratio-37"></span>
+          <span class="circle-6 ratio-20"></span>
+          <span class="circle-7 ratio-20"></span>
+          <span class="circle-8 ratio-37"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+
+
+
+{{/* Contact Section */}}
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5 col-md-8 text-center mb-5 mb-lg-0" data-aos="fade-up">
+        <div class="pe-0 pe-lg-5">
+          {{ if fileExists (printf `assets/%s` .Params.contact_image) }}
+          {{$img:= resources.Get .Params.contact_image }}
+          {{$img:= $img.Resize "575x"}}
+          <img loading="lazy" decoding="async" class="img-fluid" width="{{$img.Width}}" height="{{$img.Height}}" src="{{$img.RelPermalink}}" alt="cobtact image" onerror="this.onerror=null;this.src='{{$img.RelPermalink}}'">
+          {{end}}
+        </div>
+      </div>
+      {{with site.Params.contact_form_action}}
+      <div class="col-lg-5 col-md-10" data-aos="fade-up">
+        <div class="contact-form">
+          <div class="mb-4">
+            <h3>{{i18n `send_a_message`}}</h3>
+          </div>
+          <form id="contact-form" action="{{.}}" method="POST">
+            <p id="form-status" class="form-status"></p>
+            <div class="form-group mb-4">
+              <label class="mb-2" for="name">{{i18n `full_name`}}</label>
+              <input class="form-control shadow-none" id="name" name="{{i18n `full_name`}}" type="text" placeholder="{{i18n `full_name`}}" required>
+            </div>
+            <div class="form-group mb-4">
+              <label class="mb-2" for="email">{{i18n `email`}}</label>
+              <input class="form-control shadow-none" id="email" name="{{i18n `email`}}" type="email" placeholder="{{i18n `email`}}" required>
+            </div>
+            <div class="form-group mb-4">
+              <label class="mb-2" for="message">{{i18n `your_message`}}</label>
+              <textarea class="form-control shadow-none h-auto" id="message" name="Comment" rows="4" required></textarea>
+            </div>
+
+            <button class="btn btn-primary w-100 mt-4" type="submit" aria-label="Send Message">{{i18n `send_message`}}</button>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        var form = document.getElementById('contact-form');
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("form-status");
+          var data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(response => {
+            status.innerHTML = "{{i18n `form_thanks_message`}}";
+            form.reset()
+          }).catch(error => {
+            status.innerHTML = "{{i18n `form_error_message`}}";
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
+      </script>
+      {{end}}
+    </div>
+
+    <div class="section pb-0">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="section-title text-center" data-aos="fade-up">
+            <p class="text-uppercase">{{i18n `contact_us`}}</p>
+            <h2 class="title">{{i18n `get_in_touch`}}</h2>
+          </div>
+        </div>
+
+        {{with site.Params.contact_info.phone}}
+        <div class="col-xl-3 col-lg-4 col-md-6 contact-widget" data-aos="fade-up">
+          <div class="block text-center">
+            <h3 class="mb-4">{{i18n `phone`}}</h3>
+            <ul class="list-unstyled">
+              {{range .}}
+              {{if .}}
+              <li><a href="tel:{{.}}"><i class="las la-phone"></i>{{.}}</a></li>
+              {{end}}
+              {{end}}
+            </ul>
+          </div>
+        </div>
+        {{end}}
+
+        {{with site.Params.contact_info.email}}
+        <div class="col-xl-3 col-lg-4 col-md-6 contact-widget" data-aos="fade-up" data-aos-delay="100">
+          <div class="block text-center">
+            <h3 class="mb-4">{{i18n `email`}}</h3>
+            <ul class="list-unstyled">
+              {{range .}}
+              {{if .}}
+              <li><a href="mailto:{{.}}"><i class="las la-envelope-open-text"></i>{{.}}</a></li>
+              {{end}}
+              {{end}}
+            </ul>
+          </div>
+        </div>
+        {{end}}
+
+        {{with site.Params.social}}
+        <div class="col-xl-3 col-lg-4 col-md-12 contact-widget" data-aos="fade-up" data-aos-delay="200">
+          <div class="block text-center">
+            <h3 class="mb-4">{{i18n `social_media`}}</h3>
+            <ul class="list-unstyled">
+              {{range .}}
+              {{if .}}
+              <li><a href="{{.link}}"><i class="{{.icon}}"></i>{{.title}}</a></li>
+              {{end}}
+              {{end}}
+            </ul>
+          </div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+  </div>
+</section>
+{{/* End Contact Section */}}
+
+
+
+
 {{end}}
