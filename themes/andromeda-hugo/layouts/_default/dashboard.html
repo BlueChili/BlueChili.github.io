@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="{{ site.LanguageCode | default `en-US` }}" itemscope itemtype="http://schema.org/WebPage">
+
+    <head>
+        {{ partial "essentials/head.html" . }}
+
+        <!-- cache partial only in production -->
+        {{ if hugo.IsProduction }}
+        {{ partialCached "essentials/style.html" . }}
+        {{ else }}
+        {{ partial "essentials/style.html" . }}
+        {{ end }}
+    </head>
+
+    <body class="dbd">
+
+        <header class="dbd-Nav">
+             <div class="row">
+                <div class="col-12">
+                   <nav class="navbar navbar-expand-lg navbar-light p-0">
+                      <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
+                        {{ partial "logo.html" . }}
+                      </a>
+
+                      <div class="nav-controller d-flex align-items-center">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="d-inline">&#9776;</span>
+                          <span class="d-none">&times;</span>
+                        </button>
+                      </div>
+
+                      <div class="collapse navbar-collapse justify-content-lg-right" id="navHeader">
+                        <ul class="navbar-nav mx-auto d-lg-none">
+                          {{ $currentPage := . }}
+                          {{ range site.Menus.dashboard }}
+                          {{ $menuURL := .URL | absLangURL }}
+                          {{ $pageURL:= $currentPage.Permalink | absLangURL }}
+                          {{ $active := eq $menuURL $pageURL }}
+                          <li class="nav-item {{if $active}}active{{end}}">
+                                {{ with .Params.icon }}
+                                  <img class="dbd-NavIcon" src="/icons/{{ . }}.svg" alt="">
+                                {{ end }}
+                            <a class="nav-link" {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
+                              href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{ .URL }}{{else}}{{.URL | relLangURL}}{{end}}">{{ .Name }}</a>
+                          </li>
+                          {{ end }}
+                        </ul>
+
+                        <div class="navbar-right">
+                          <!-- Language List -->
+                          {{ if .IsTranslated }}
+                          <div class="d-none d-lg-inline text-center">
+                            <select class="mx-3 border-0 font-weight-bold" id="select-language-" onchange="location = this.value;">
+                              {{ $siteLanguages := site.Languages}}
+                              {{ $pageLang := .Page.Lang}}
+                              {{ range .Page.AllTranslations }}
+                              {{ $translation := .}}
+                              {{ range $siteLanguages }}
+                              {{ if eq $translation.Lang .Lang }}
+                              {{ $selected := false }}
+                              {{ if eq $pageLang .Lang}}
+                              <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}" selected>{{ .LanguageName }}
+                              </option>
+                              {{ else }}
+                              <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}">{{ .LanguageName }}</option>
+                              {{ end }}
+                              {{ end }}
+                              {{ end }}
+                              {{ end }}
+                            </select>
+                          </div>
+                          {{ end }}
+
+                          {{ if site.Params.navigation_button.enable }}
+                          <a href="{{ site.Params.navigation_button.link | relURL }}" class="btn btn-outline-primary">Logout</a>
+                          {{ end }}
+                        </div>
+                      </div>
+                  </nav>
+                </div>
+             </div>
+        </header>
+
+        <section class="dbd-Sidebar">
+            <nav class="d-none d-lg-flex flex-column justify-content-center h-100">
+                <ul>
+                    {{ $currentPage := . }}
+                    {{ range site.Menus.dashboard }}
+                    {{ $menuURL := .URL | absLangURL }}
+                    {{ $pageURL:= $currentPage.Permalink | absLangURL }}
+                    {{ $active := eq $menuURL $pageURL }}
+                    <li class="d-flex align-items-center my-3 mx-2">
+                        {{ with .Params.icon }}
+                          <img class="dbd-ItemIcon" src="/icons/{{ . }}.svg" alt="">
+                        {{ end }}
+                        <label class="dbd-ItemLabel color-primary" for="{{ .Params.section }}">{{ .Name }}</label>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+        </section>
+        <!-- /navigation -->
+
+        {{ range $i, $v := .Site.Menus.dashboard }}
+        <input id="{{ .Params.section }}" class="dbd-NavInput" type="radio" name="dbd-NavInput" value="{{ .Params.section }}" {{ if eq $i 0 }}checked="checked"{{ end }}/>
+        {{ end }}
+
+        <main class="vp px-2 py-4">
+            {{ partial "dashboard/overview" . }}
+            {{ partial "dashboard/canvas" . }}
+            {{ partial "dashboard/details" . }}
+            {{ partial "dashboard/form" . }}
+        </main>
+
+        <!-- cache partial only in production -->
+        {{ if hugo.IsProduction }}
+        {{ partialCached "essentials/script.html" . }}
+        {{ else }}
+        {{ partial "essentials/script.html" . }}
+        {{ end }}
+    </body>
+
+</html>

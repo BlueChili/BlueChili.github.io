@@ -32,3 +32,15 @@
 @mixin size($size){
   width: $size; height: $size;
 }
+
+@mixin show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+@mixin hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}

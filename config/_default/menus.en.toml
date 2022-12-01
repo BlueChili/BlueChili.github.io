@@ -118,3 +118,35 @@ weight = 3
 name = "Changelog"
 url = "changelog/"
 weight = 4
+
+[[dashboard]]
+name = "Overview"
+weight = 1
+  [dashboard.params]
+  section = "overview"
+  icon = "dashboard-web"
+
+[[dashboard]]
+name = "Canvas"
+weight = 2
+  [dashboard.params]
+  section = "canvas"
+  icon = "drag3"
+
+[[dashboard]]
+name = "Details"
+  [dashboard.params]
+  section = "details"
+  icon = "cubes"
+
+[[dashboard]]
+name = "Form like"
+  [dashboard.params]
+  section = "form"
+  icon = "listing-box"
+
+[[dashboard]]
+name = "Profile3"
+  [dashboard.params]
+  section = "profile3"
+  icon = "settings"
