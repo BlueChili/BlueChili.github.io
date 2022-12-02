@@ -147,7 +147,6 @@ input[name="dbd-NavInput"] {
 
 
 
-
 //=============================================//
 //===           Canvas Screen           ===//
 //=============================================//
@@ -250,4 +249,24 @@ input[name="dbd-NavInput"] {
 
   .form-group { margin-bottom: 0.75rem; }
 
+}
+
+
+
+.dbd-Profile {
+  &Content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+
+  &Picture {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }

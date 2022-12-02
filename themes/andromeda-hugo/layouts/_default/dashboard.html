@@ -102,7 +102,7 @@
         <!-- /navigation -->
 
         {{ range $i, $v := .Site.Menus.dashboard }}
-        <input id="{{ .Params.section }}" class="dbd-NavInput" type="radio" name="dbd-NavInput" value="{{ .Params.section }}" {{ if eq $i 0 }}checked="checked"{{ end }}/>
+        <input id="{{ .Params.section }}" class="dbd-NavInput" type="radio" name="dbd-NavInput" value="{{ .Params.section }}" {{ if eq $i 4 }}checked="checked"{{ end }}/>
         {{ end }}
 
         <main class="vp px-2 py-4">
@@ -110,6 +110,7 @@
             {{ partial "dashboard/canvas" . }}
             {{ partial "dashboard/details" . }}
             {{ partial "dashboard/form" . }}
+            {{ partial "dashboard/profile" . }}
         </main>
 
         <!-- cache partial only in production -->
