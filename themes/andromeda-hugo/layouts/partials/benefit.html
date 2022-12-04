@@ -1,0 +1,46 @@
+{{with .Params.benefit}}
+{{if .enable}}
+<section class="section career">
+  <div class="container-xxl position-relative">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block">
+          <div class="section-title text-center mb-0">
+            <p class="text-uppercase">{{.subtitle | markdownify}}</p>
+            <h2 class="title">{{.title | markdownify}}</h2>
+            <p>{{.description | markdownify}}</p>
+          </div>
+
+          <div class="row career-benefits mx-auto justify-content-around">
+            {{ $.Scratch.Set "counter" 0 }}
+            {{range .benefits}}
+            {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+            {{$n := $.Scratch.Get "counter"}}
+            <div class="col-lg-3 col-md-6">
+              <div class="career-benefits-item text-center">
+                <i class="{{.icon}} text-primary mb-2"></i>
+                <h4>{{.title | markdownify}}</h4>
+              </div>
+            </div>
+            {{if (modBool $n 3)}}<div class="col-lg-12 d-none d-lg-block"></div>{{end}}
+            {{end}}
+          </div>
+        </div>
+
+
+        <div class="has-circle has-bg-anim" data-aos="fade-in">
+          <span class="circle-1 ratio-32"></span>
+          <span class="circle-2 ratio-37"></span>
+          <span class="circle-3 ratio-20"></span>
+          <span class="circle-4 ratio-47"></span>
+          <span class="circle-5 ratio-37"></span>
+          <span class="circle-6 ratio-20"></span>
+          <span class="circle-7 ratio-20"></span>
+          <span class="circle-8 ratio-37"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
