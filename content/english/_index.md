@@ -154,11 +154,16 @@ about_video:
 
 
 # brands
-brands_carousel:
+brands_carousel_alt:
   enable: true
   subtitle: "Our Clients"
   title: "Trusted by Thousands Companies"
-  section: "/" # brand images comming form _index.md
+  brand_images:
+  - "images/brands/01-colored.png"
+  - "images/brands/02-colored.png"
+  - "images/brands/03-colored.png"
+  - "images/brands/04-colored.png"
+  - "images/brands/05-colored.png"
 
 
 # our team
@@ -203,7 +208,7 @@ our_office:
     address_line_one: "1hao Wen Ti Huo Dong"
     address_line_two: "Zhong Xin 1ceng Jian Xing"
 
-# our_values
+# case_studies
 case_studies:
   enable: true
   subtitle: "Case studies"
@@ -283,6 +288,14 @@ open_position:
   subtitle: "Join Team"
   title: "Join Our Growing Team"
 
+
+# contact
+contact:
+  enable: true
+  contact_image: "images/vectors/contact.png"
+
+
+#Pricing section
 offer : "Save 50% On Annual Subscription"
 # you can set only monthly, only yearly, or toggle both
 monthly_yearly_toggle: "toggle" # available value "monthly"/"yearly"/"toggle"

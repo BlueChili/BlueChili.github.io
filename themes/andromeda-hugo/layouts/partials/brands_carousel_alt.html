@@ -1,4 +1,4 @@
-{{with .Params.brands_carousel}}
+{{with .Params.brands_carousel_alt}}
 {{if .enable}}
 <section class="section-sm">
   <div class="container">
@@ -9,8 +9,6 @@
           <h2 class="title">{{.title | markdownify}}</h2>
         </div>
       </div>
-      {{with site.GetPage (string .Params.clients.section)}}
-      {{with .Params.brands_carousel}}
       <div class="col-md-12" data-aos="fade-left">
         <div class="brand-carousel swiper-container border-0 mt-0">
           <div class="swiper-wrapper">
@@ -34,8 +32,6 @@
           </div>
         </div>
       </div>
-      {{end}}
-      {{end}}
     </div>
   </div>
 </section>
